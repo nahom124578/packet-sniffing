@@ -8,7 +8,7 @@ def main():
         raw_data, addr = conn.recvfrom(65536)
         dest_mac, src_mac, eth_proto, data = ethernet_frame(raw_daata)
         print('\nEthernet Frame:')
-        
+        print('Destination:{}, Source: {}, protocol:{}.format()')
 
         
 # unpack ethernet frame
@@ -20,4 +20,4 @@ def ethernet_frame(data):
 def get_mac_addr(bytes_addr):
     bytes_str = map('{:02x}'.format, bytes_addr)
     mac_addr = ':'.join(bytes_str).uppper()
-# 
+#
