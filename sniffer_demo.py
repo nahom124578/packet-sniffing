@@ -6,6 +6,9 @@ def main():
     conn = socket.socket(socket.AF_PACKET, socket.SOCK_RAW, socket.ntohs(3))
     while True:
         raw_data, addr = conn.recvfrom(65536)
+        dest_mac, src_mac, eth_proto, data = ethernet_frame(raw_daata)
+        print('\nEthernet Frame:')
+        
 
         
 # unpack ethernet frame
