@@ -8,7 +8,7 @@ def main():
         raw_data, addr = conn.recvfrom(65536)
         dest_mac, src_mac, eth_proto, data = ethernet_frame(raw_daata)
         print('\nEthernet Frame:')
-        print('Destination:{}, Source: {}, protocol:{}'.format( dest_mac, src_mac, eth_proto))
+        print(TAB_1 + 'Destination:{}, Source: {}, protocol:{}'.format( dest_mac, src_mac, eth_proto))
 
         
 # unpack ethernet frame
