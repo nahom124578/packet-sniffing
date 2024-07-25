@@ -19,6 +19,9 @@ def main():
         print('\nEthernet Frame:')
         print(TAB_1 + 'Destination:{}, Source: {}, protocol:{}'.format( dest_mac, src_mac, eth_proto))
 
+        #ipv4
+        if eth_proto == 8:
+            (version, header_length, ttl, proto, src, targer, data) = ipv4_packet(data)
         
 # unpack ethernet frame
 def ethernet_frame(data):
