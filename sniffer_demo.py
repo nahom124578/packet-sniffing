@@ -51,4 +51,21 @@ def tcp_segment(data):
     flag_syn = (offset_reserved_flags & 2) >> 1
     flag_fin = offset_reserved_flags & 1
     return src_port, dest_port, sequence, acknowledgement, flag_urg, flag_ack, flag_psh, flag_rst, flag_syn, flag_fin , data[offset:]
+
+# unpack udp
+def udp_segment(data):
+    src_port, dest_port, size = struct.unpack('! H H 2X H', data[:8])
+    return src_port, dest_port, size, data[8:]
+#remots multi_line data
+def format_multi_line(prefix, sting, size=00):
+    size -= len(prefix)
+    if isinstance(string, byte):
+        string = ''.join(r'\X{:02X}'.format(byte) for byte in string)
+        if size %2:
+            size -= 1
+    return '\n'.join([prefix + line for line in textwrap.wrap( string, size)])
+ 
+
+
+
 main()
