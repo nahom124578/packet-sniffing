@@ -1,6 +1,15 @@
 import socket
 import struct
 import textwrap
+TAB_1 = '\t -'
+TAB_2 = '\t\t -'
+TAB_3 = '\t\t -'
+TAB_4 = '\t\t\t -'
+
+DATA_TAB_1 = '\t -'
+DATA_TAB_2 = '\t\t -'
+DATA_TAB_3 = '\t\t\t -'
+DATA_TAB_4 = '\t\t\t\t -'
 
 def main():
     conn = socket.socket(socket.AF_PACKET, socket.SOCK_RAW, socket.ntohs(3))
