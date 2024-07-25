@@ -22,7 +22,39 @@ def main():
         #ipv4
         if eth_proto == 8:
             (version, header_length, ttl, proto, src, targer, data) = ipv4_packet(data)
-        
+            print(TAB_1 + 'IPV4 packet:')
+            print(TAB_2 + 'Version: {}, Header Length:{}, ttl: {}'.format(version, header_length, ttl))
+            print(TAB_2 + 'Protocol: {}, source:{}, target: {}'.format(proto, src, targer))
+            
+            if proto == 1:
+                icmp_type, code, checksum, data = icmp_packet(data)
+                print(TAB_1 + 'ICMP packet:')
+                print(TAB_2 + 'Type: {}, code: {}, checksum: {},'.format(icmp_type, code, checksum))
+                print(TAB_2 + 'Data:')
+
+                #TCP
+            elif proto ==6:
+                (src_port, dest_poer, sequence, acknowledgement, flag_urg, flag_ack, flag_psh, flag_rst, flag_syn, flag_fin)
+                print(TAB_1 + 'TCP Segment:')
+                print(TAB_2 + 'source Port: {}, Destination Port: {}'.format(drc_port))
+                print(TAB_2 + 'Sequence:{}, Acknowledgement:{}'.format(sequence, acknowledgement))
+                print(TAB_2 + 'Flags:')
+                print(TAB_3 + 'URG: {}, ACK: {}, PDH: {}, RST: {}, SYN: {}, FIN: {}'.format(flag_urg, flag_ack, flag_psh, flag_rst, flag_syn, flag_fin))
+                print(TAB_2 + 'Data:')
+                print(format_multi_line(DATA_TAB_3,data))
+            #udp
+            elif proto == 17:
+                src_port, dest_port, length, data = udp_segment(data)
+                print( TAB_1 + 'udp_segment:')
+                print( TAB_2 + 'source port: {}, Destination port:{}, length: {L}'.format( src_port, dest_port, length))
+            #other 
+            else:
+                print(TAB_1 + 'Data:')
+                print(format_multi_line(DATA_TAB_2, data))
+        else:
+            print('Data:')
+            print(format_multi_line(DATA_TAB_1, data
+            ))
 # unpack ethernet frame
 def ethernet_frame(data):
     dest_mac, src_mac, proto = struct.unpack('! 6s 6s H' , data[:14])
